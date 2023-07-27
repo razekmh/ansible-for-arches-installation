@@ -1,5 +1,5 @@
 # Tested on Ubuntu 22.04 (LTS) x64
-- name: Update and Upgrade apt packages
+- name: Update and Upgrade apt packages and reboot
   hosts: archesservers
   remote_user: root
 
@@ -11,3 +11,6 @@
         update_cache: true
         force_apt_get: true
         cache_valid_time: 3600
+    - name: Slow reboot
+      ansible.builtin.reboot:
+        reboot_timeout: 3600
