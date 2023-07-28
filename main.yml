@@ -4,13 +4,8 @@
   remote_user: root
 
   tasks:
-    - name: Update apt-get repo, cache and upgrade
-      become: true
-      ansible.builtin.apt:
-        upgrade: true
-        update_cache: true
-        force_apt_get: true
-        cache_valid_time: 3600
-    - name: Slow reboot
-      ansible.builtin.reboot:
-        reboot_timeout: 3600
+    - name: Update apt
+      block:
+        - name: Update
+          ansible.builtin.import_tasks:
+            file: update.yml

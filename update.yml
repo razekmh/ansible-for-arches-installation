@@ -1,0 +1,17 @@
+# Tested on Ubuntu 22.04 (LTS) x64
+
+- name: Update apt repo, cache and upgrade
+  become: true
+  ansible.builtin.apt:
+    upgrade: true
+    update_cache: true
+    force_apt_get: true
+    cache_valid_time: 3600
+  tags:
+    - update
+- name: Slow reboot
+  ansible.builtin.reboot:
+    reboot_timeout: 3600
+  tags:
+    - update
+    - reboot
