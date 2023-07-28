@@ -8,4 +8,9 @@
       block:
         - name: Update
           ansible.builtin.import_tasks:
-            file: update.yml
+            file: ../tasks/update.yml
+    - name: Install apt packages
+      block:
+        - name: Apt packages
+          ansible.builtin.import_tasks:
+            file: ../tasks/install-apt-packages.yml
